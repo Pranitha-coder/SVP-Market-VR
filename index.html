@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101820">
+
+  <title>Sardar Vallabhai Patel Market | 360° VR</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+</head>
+
+<body>
+  <main id="app">
+
+    <!-- Welcome Screen -->
+    <section id="welcome-screen" class="welcome-screen">
+      <div class="welcome-card">
+
+        <span class="eyebrow-tag" data-i18n="eyebrow">
+          Virtual Reality Walkthrough
+        </span>
+
+        <h1 data-i18n="title">
+          Sardar Vallabhai Patel Market
+        </h1>
+
+        <p data-i18n="subtitle">
+          virtual reality experience
+        </p>
+
+        <button id="btn-start" class="btn btn-primary" type="button">
+          <span data-i18n="start">START TOUR</span>
+          <span aria-hidden="true">→</span>
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- Information Button -->
+    <button
+      id="info-btn"
+      class="info-btn"
+      type="button"
+      aria-label="Toggle location information">
+      i
+    </button>
+
+
+    <!-- Information Panel -->
+    <aside id="info-panel" class="info-panel" aria-live="polite">
+
+      <span class="info-tag" data-i18n="info_tag">
+        About this place
+      </span>
+
+      <h2 id="info-title">Market Courtyard</h2>
+
+      <p id="info-text"></p>
+
+    </aside>
+
+
+    <!-- Sidebar Navigation -->
+    <nav
+      id="sidebar-menu"
+      class="sidebar-menu"
+      aria-label="Tour controls">
+
+      <button
+        class="menu-item"
+        id="btn-home"
+        type="button"
+        title="Home View">
+
+        <span class="menu-icon" aria-hidden="true">⌂</span>
+        <span data-i18n="menu_home">Home</span>
+
+      </button>
+
+
+      <button
+        class="menu-item"
+        id="btn-siteplan"
+        type="button"
+        title="Site Plan">
+
+        <span class="menu-icon" aria-hidden="true">▧</span>
+        <span data-i18n="menu_plan">Site Plan</span>
+
+      </button>
+
+
+      <button
+        class="menu-item"
+        id="btn-vr"
+        type="button"
+        title="Enter VR Mode">
+
+        <span class="menu-icon" aria-hidden="true">◉</span>
+        <span data-i18n="menu_vr">VR Mode</span>
+
+      </button>
+
+
+      <button
+        class="menu-item"
+        id="btn-lang"
+        type="button"
+        title="Toggle Language">
+
+        <span class="menu-icon" aria-hidden="true">文</span>
+        <span id="lang-label">EN / TE</span>
+
+      </button>
+
+    </nav>
+
+
+    <!-- Site Plan Modal -->
+    <section
+      id="siteplan-modal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="siteplan-heading">
+
+      <div class="modal-content">
+
+        <button
+          class="btn-close"
+          id="btn-close-plan"
+          type="button"
+          aria-label="Close">
+          ×
+        </button>
+
+        <h2 id="siteplan-heading" data-i18n="siteplan_title">
+          Site Plan
+        </h2>
+
+        <p class="modal-description" data-i18n="siteplan_desc">
+          Select a location to explore in 360°:
+        </p>
+
+        <div class="plan-viewport">
+
+          <img
+            id="siteplan-img"
+            src="assets/images/site plan.jpeg"
+            alt="Market site plan">
+
+        </div>
+
+        <div id="plan-nav-bar" class="plan-nav-bar"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- 360 Degree VR Scene -->
+    <a-scene
+      id="vr-scene"
+      embedded
+      loading-screen="dotsColor: #2ecc71; backgroundColor: #0a0e14"
+      vr-mode-ui="enabled: false"
+      renderer="colorManagement: true; physicallyCorrectLights: true">
+
+      <!-- Panorama Image -->
+      <a-sky
+        id="skybox"
+        radius="100"
+        rotation="0 0 0">
+      </a-sky>
+
+
+      <!-- Hotspot Layer -->
+      <a-entity id="hotspot-layer"></a-entity>
+
+
+      <!-- Camera -->
+      <a-entity
+        id="camera-rig"
+        position="0 1.6 0">
+
+        <a-camera
+          id="camera"
+          look-controls="pointerLockEnabled: false">
+        </a-camera>
+
+      </a-entity>
+
+
+      <!-- Invisible Mouse Click Detector -->
+      <a-entity
+        cursor="rayOrigin: mouse; fuse: false"
+        raycaster="objects: .clickable; far: 20"
+        visible="false">
+      </a-entity>
+
+    </a-scene>
+
+  </main>
+
+
+  <!-- Main JavaScript -->
+  <script src="js/script.js" defer></script>
+
+</body>
+</html>
