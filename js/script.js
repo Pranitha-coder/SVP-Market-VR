@@ -94,7 +94,7 @@ function buildVRLocationMenu() {
 
  vrLocationMenu.setAttribute(
   "position",
-  "-2.2 0 -1.8"
+  "-0.55 0 -1.5"
 );
 
   vrLocationMenu.setAttribute("visible", "false");
